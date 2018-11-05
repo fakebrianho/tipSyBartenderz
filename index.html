@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+
+<head>
+
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+
+    <title>A MOTHER FUCKING FRAMES BITCH</title>
+
+<body>
+
+<a-scene>
+
+    <a-assets>
+
+        <img id="barFloor" src="assets/textures/floor.jpg">
+
+        <img id="brickWall" src="assets/textures/brick.jpg">
+
+        <a-asset-item id="barModel" src="assets/models/bar.obj">
+
+            <a-asset-item id="barMaterial" src="assets/textures/bar.mtl">
+
+                <a-asset-item id="bgTable" src="assets/models/table.obj">
+
+                    <a-asset-item id="tableModel" src="assets/models/itme.obj">
+
+                        <a-asset-item id="tableMaterial" src="assets/textures/itme.mtl">
+
+
+                        </a-asset-item></a-asset-item></a-asset-item></a-asset-item></a-assets>
+
+    <a-entity camera="active: true" look-controls wasd-controls position="-3.046 2.15 13.849" data-aframe-default-camera></a-entity>
+
+    <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" material="" geometry=""></a-box>
+
+    <!--Controls-->
+    <a-entity vive-controls="hand: left"></a-entity>
+    <a-entity vive-controls="hand: right"></a-entity>
+    <!--Lights-->
+    <a-light type="ambient" color="#fff"></a-light>
+
+    <!--Floors-->
+    <a-plane id ='floors' src="#barFloor" height="10" width="10" rotation="-90 0 0" position="0 0 10" material="" geometry=""></a-plane>
+    <a-plane id ='floors' src="#barFloor" height="10" width="10" rotation="-90 0 0" position="10 0 10" material="" geometry=""></a-plane>
+    <a-plane id ='floors' src="#barFloor" height="10" width="10" rotation="-90 0 0" material="" geometry=""></a-plane>
+    <a-plane id ='floors' src="#barFloor" height="10" width="10" rotation="-90 0 0" position="-10 0 0" material="" geometry=""></a-plane>
+    <a-plane id ='floors' src="#barFloor" height="10" width="10" rotation="-90 0 0" position="10 0 10" material="" geometry=""></a-plane>
+    <a-plane id ='floors' src="#barFloor" height="10" width="10" rotation="-90 0 0" position="10 0 0" material="" geometry=""></a-plane>
+    <a-plane id ='floors' src="#barFloor" height="10" width="10" rotation="-90 0 0" position="-10 0 10" material="" geometry=""></a-plane>
+
+    <!--Walls-->
+    <a-plane src="#brickWall" height="5" width="5" position="-12.5 2.5 -5" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="2.5 2.5 -5" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="-2.5 2.5 -5" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="7.5 2.5 -5" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="-7.5 2.5 -5" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="12.5 2.5 -5" material="" geometry=""></a-plane>
+
+    <a-plane src="#brickWall" height="5" width="5" position="12.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="2.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="7.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="-2.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="-7.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="-12.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
+
+    <a-plane src="#brickWall" height="5" width="5" position="-15 2.5 12.5" rotation ="0 90 0" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="-15 2.5 7.5" rotation ="0 90 0" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="-15 2.5 2.5" rotation ="0 90 0" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="-15 2.5 -2.5" rotation ="0 90 0" material="" geometry=""></a-plane>
+
+    <a-plane src="#brickWall" height="5" width="5" position="15 2.5 12.5" rotation ="0 -90 0" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="15 2.5 7.5" rotation ="0 -90 0" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="15 2.5 2.5" rotation ="0 -90 0" material="" geometry=""></a-plane>
+    <a-plane src="#brickWall" height="5" width="5" position="15 2.5 -2.5" rotation ="0 -90 0" material="" geometry=""></a-plane>
+    <!--<a-plane src="#brickWall" height="5" width="5" position="2.5 2.5 15" rotation ="0 90 0" material="" geometry=""></a-plane>-->
+    <!--<a-plane src="#brickWall" height="5" width="5" position="7.5 2.5 15" rotation ="0 90 0" material="" geometry=""></a-plane>-->
+    <!--<a-plane src="#brickWall" height="5" width="5" position="-2.5 2.5 15" rotation ="0 90 0" material="" geometry=""></a-plane>-->
+    <!--<a-plane src="#brickWall" height="5" width="5" position="-7.5 2.5 15" rotation ="0 90 0" material="" geometry=""></a-plane>-->
+    <!--<a-plane src="#brickWall" height="5" width="5" position="-12.5 2.5 15" rotation ="0 90 0" material="" geometry=""></a-plane>-->
+
+
+
+    <!--Models-->
+    <a-obj-model src="#bgTable" position="-2.882 0 0.630" rotation="90 0 0" scale="-0.018 -0.018 -0.018" material="" obj-model=""></a-obj-model>
+    <a-obj-model src="#tableModel" position ="-4 0 13.217" rotation="0 0 180" scale="-0.065 -0.065 -0.065" material="src:assets/textures/itme.mtl"></a-obj-model>
+
+</a-scene>
+
+<script>
+
+</script>
+
+</body>
+
+</html>
