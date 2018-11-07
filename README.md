@@ -75,5 +75,5 @@ https://www.npmjs.com/package/aframe-text-geometry-component
 
 Game Design Guidance and Instruction:
 
-Prof. Christian Grewell
+Prof. Christian Grewell (http://christian.bio/)
 
