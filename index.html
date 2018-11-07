@@ -5,12 +5,27 @@
     <script src="components/floors.js"></script> 
     <script src="components/ceiling.js"></script> 
     <script src="components/walls.js"></script> 
+    <script src="https://unpkg.com/super-hands/dist/super-hands.min.js"></script> 
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.2/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
    	<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script> 
     <script src="https://unpkg.com/aframe-text-geometry-component/dist/aframe-text-geometry-component.min.js"></script> 
     <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script> 
 	<title>A MOTHER FUCKING FRAMES BITCH</title>
 <body>
     <script>
+    AFRAME.registerComponent('phase-shift', {
+        init: function () {
+          var el = this.el
+          el.addEventListener('gripdown', function () {
+            el.setAttribute('collision-filter', {collisionForces: true})
+          })
+          el.addEventListener('gripup', function () {
+            el.setAttribute('collision-filter', {collisionForces: false})
+          })
+        }
+      })
     </script> 
 <a-scene>
     <a-assets>
@@ -59,47 +74,28 @@
         <a-asset-item id="ceilingMod" src="assets/wall.obj"></a-asset-item> 
         <a-asset-item id="ceilingMat" src="assets/wall.mtl"></a-asset-item> 
 
-        <a-asset-item id="barModel" src="assets/models/bar.obj">
-        <a-asset-item id="barMaterial" src="assets/textures/bar.mtl">
-        <a-asset-item id="bgTable" src="assets/models/table.obj">
-        <a-asset-item id="tableModel" src="assets/models/itme.obj">
-        <a-asset-item id="tableMaterial" src="assets/textures/itme.mtl">
-        </a-asset-item></a-asset-item></a-asset-item></a-asset-item></a-assets>
-    <a-entity camera="active: true" look-controls wasd-controls position="-0.662 2.747 12.244" data-aframe-default-camera></a-entity>
-    <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" material="" geometry=""></a-box>
-    <!--Controls-->
-    <a-entity vive-controls="hand: left"></a-entity>
-    <a-entity vive-controls="hand: right"></a-entity>
+        <a-asset-item id="barModel" src="assets/models/bar.obj"></a-asset-item> 
+        <a-asset-item id="barMaterial" src="assets/textures/bar.mtl"></a-asset-item> 
+        <a-asset-item id="bgTable" src="assets/models/table.obj"></a-asset-item> 
+        <a-asset-item id="tableModel" src="assets/models/itme.obj"></a-asset-item> 
+        <a-asset-item id="tableMaterial" src="assets/textures/itme.mtl"></a-asset-item> 
+        <!--    <a-entity camera="active: true" look-controls wasd-controls position="-0.662 2.747 12.244" data-aframe-default-camera></a-entity>-->
+        <a-entity>
+        <a-camera positon="-0.662 2.747 12.244"></a-camera>
+        <a-entity id="rhand" mixin="touch"
+                  vive-controls="hand: right"
+                  oculus-touch-controls="hand: right"
+                  windows-motion-controls="hand: right">
+        </a-entity>
+        <a-entity id="lhand" mixin="touch"
+                  vive-controls="hand: left"
+                  oculus-touch-controls="hand: left"
+                  windows-motion-controls="hand: left">
+        </a-entity>
+        </a-entity>
+
     <!--Lights-->
     <a-light type="ambient" color="#fff"></a-light>
-    <!--Floors-->
-
-
-
-    <!--Walls
-    <a-plane src="#brickWall" height="5" width="5" position="-12.5 2.5 -5" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="2.5 2.5 -5" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="-2.5 2.5 -5" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="7.5 2.5 -5" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="-7.5 2.5 -5" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="12.5 2.5 -5" material="" geometry=""></a-plane>
-
-    <a-plane src="#brickWall" height="5" width="5" position="12.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="2.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="7.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="-2.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="-7.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="-12.5 2.5 15" rotation ="0 180 0" material="" geometry=""></a-plane>
-
-    <a-plane src="#brickWall" height="5" width="5" position="-15 2.5 12.5" rotation ="0 90 0" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="-15 2.5 7.5" rotation ="0 90 0" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="-15 2.5 2.5" rotation ="0 90 0" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="-15 2.5 -2.5" rotation ="0 90 0" material="" geometry=""></a-plane>
-
-    <a-plane src="#brickWall" height="5" width="5" position="15 2.5 12.5" rotation ="0 -90 0" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="15 2.5 7.5" rotation ="0 -90 0" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="15 2.5 2.5" rotation ="0 -90 0" material="" geometry=""></a-plane>
-    <a-plane src="#brickWall" height="5" width="5" position="15 2.5 -2.5" rotation ="0 -90 0" material="" geometry=""></a-plane>-->
 
     <!--Models-->
     <a-entity tables></a-entity> 
