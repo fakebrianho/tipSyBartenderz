@@ -11,15 +11,8 @@ AFRAME.registerComponent('starting',{
                     let visGroup = document.querySelector('#modelWrap');
                     visGroup.setAttribute('visible', 'true');
                 }, 9000);
-                },
-            tick: function(){
-                let sceneEl = document.querySelector('a-scene');
-                let text = document.querySelector('#txt');
-     //           counterString = counter.toString();
-      //          counter = counter - 1;
-                //text.setAttribute('text-geometry', 'value: ' + counterString);
+                }
             }
-
 }); 
 
 AFRAME.registerComponent('umUmUmUm', {
@@ -33,8 +26,8 @@ AFRAME.registerComponent('umUmUmUm', {
 AFRAME.registerComponent('click-listener', {
   init: function () {
     var el = this.el;
-    window.addEventListener('click', function () {
-    countTime = true; 
+        el.addEventListener('click', function () {
+        countTime = true; 
     });
   },
     tick: function(){
@@ -43,8 +36,8 @@ AFRAME.registerComponent('click-listener', {
         let text = document.querySelector('#txt');
         counterString = counter.toString();
         counter = counter - 1;
-        console.log(counter);
-        text.setAttribute('text-geometry', 'value: ' + counterString);
+        //console.log(counter);
+       // text.setAttribute('text-geometry', 'value: ' + counterString);
     } 
     }
 });
