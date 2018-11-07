@@ -89,8 +89,7 @@
         <a-asset-item id="tableMaterial" src="assets/textures/itme.mtl"></a-asset-item> 
     </a-assets>
       <a-entity>
-        <a-camera position="-0.662 2.747 12.244" look-controls wasd-controls></a-camera>
-        <a-text id="score" value="Score" position="-5.036 4.653 8.833" color="red" width="5" anchor="left"></a-text>
+        <a-camera score-track position="-0.662 2.747 12.244" look-controls wasd-controls></a-camera>
         <a-entity id="rhand" mixin="touch"
                   obj-model="#cokeModel"
                   laser-controls="hand: right">
@@ -108,7 +107,7 @@
     <a-entity tables></a-entity> 
     <a-entity floors></a-entity> 
     <a-entity ceilings></a-entity> 
-    <a-entity walls></a-entity> 
+    <a-entity walls click-listener></a-entity> 
     <a-entity starting></a-entity> 
 
     <a-entity id="textTitle" visible='false'>
