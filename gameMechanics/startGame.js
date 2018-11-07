@@ -48,7 +48,7 @@ AFRAME.registerComponent('click-listener', {
       //  console.log(counter);
        // text.setAttribute('text-geometry', 'value: ' + counterString);
     } 
-    }
+    
 });
 
 AFRAME.registerComponent('score-track', {
