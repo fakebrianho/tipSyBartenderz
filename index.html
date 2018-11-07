@@ -77,6 +77,10 @@
         <!--Ceiling--> 
         <a-asset-item id="ceilingMod" src="assets/wall.obj"></a-asset-item> 
         <a-asset-item id="ceilingMat" src="assets/wall.mtl"></a-asset-item> 
+        <!--Hand-->
+        <a-asset-item id="rightHand" src="assets/RightHand.obj"></a-asset-item> 
+        <a-asset-item id="leftHand" src="assets/LeftHand.obj"></a-asset-item> 
+        <a-asset-item id="handMat" src="assets/hand.mtl"></a-asset-item> 
 
         <a-asset-item id="barModel" src="assets/models/bar.obj"></a-asset-item> 
         <a-asset-item id="barMaterial" src="assets/textures/bar.mtl"></a-asset-item> 
@@ -84,44 +88,44 @@
         <a-asset-item id="tableModel" src="assets/models/itme.obj"></a-asset-item> 
         <a-asset-item id="tableMaterial" src="assets/textures/itme.mtl"></a-asset-item> 
     </a-assets>
-
       <a-entity>
         <a-camera position="-0.662 2.747 12.244" look-controls wasd-controls></a-camera>
         <a-entity id="rhand" mixin="touch"
                   obj-model="#cokeModel"
                   laser-controls="hand: right">
+                  <a-obj-model src="#rightHand" scale="0.325 0.325 0.325" mtl="#handMat"></a-obj-model>
         </a-entity>
         <a-entity id="lhand" mixin="touch"
                   obj-model="#cokeModel"
                   laser-controls="hand: left">
-                  <a-obj-model src="#cokeModel" scale="0.325 0.325 0.325" mtl="#cokeMaterial"></a-obj-model>
+                  <a-obj-model src="#leftHand" scale="0.325 0.325 0.325" mtl="#handMat"></a-obj-model>
         </a-entity>
       </a-entity>
     <!--Lights-->
     <a-light type="ambient" color="#fff"></a-light>
-
     <!--Models-->
     <a-entity tables></a-entity> 
     <a-entity floors></a-entity> 
     <a-entity ceilings></a-entity> 
     <a-entity walls></a-entity> 
     <a-entity starting></a-entity> 
-    <a-entity text-geometry="value: Welcome to Tipsy Bartender!; font: #fontTest" material="color: red; src: #barFloor" position="-4 2.5 6" scale="1.3 1.3 1.3"></a-entity> 
+    <a-entity id="textTitle" visible='false'>
+        <a-entity text-geometry="value: Welcome to Tipsy Bartender!; font: #fontTest" material="color: red; src: #barFloor" position="-4 2.5 6" scale="1.3 1.3 1.3"></a-entity> 
+    </a-entity>     
     <a-obj-model src="#BARMOD" position="0.000 2.385 13.830" mtl="#BARMAT"></a-obj-model> 
-    <a-entity id="modelWrap" visible="false"> 
-    <a-obj-model src="#hehModel" mixin="graber" position ="1.175 2.919 10.190" mtl="#hehMaterial"></a-obj-model> 
-    <a-obj-model src="#cokeModel"  mixin="graber" position ="0.619 2.922 10.383" scale="0.325 0.325 0.325" mtl="#cokeMaterial"></a-obj-model>
-    <a-obj-model src="#cockTailModel" mixin="graber" position ="-0.027 2.952 10.364" scale="0.250 0.250 0.250" mtl="#cockTailMaterial"></a-obj-model>
-    <a-obj-model src="#cheeseModel" mixin="graber" position ="-3.208 2.613 10.398" mtl="#cheeseMaterial"></a-obj-model> 
-    <a-obj-model src="#flaskModel" mixin="graber" position ="-1.504 2.551 10.247" scale="0.000001 0.000001 0.000001" mtl="#flaskMaterial"></a-obj-model> 
-    <a-obj-model src="#watModel" mixin="graber" position ="-0.653 2.408 10.243" mtl="#watMaterial"></a-obj-model> 
-    <a-obj-model src="#b3Model" mixin="graber" position ="-1.206 2.589 10.579" scale="0.005 0.005 0.005" mtl="#b3Material"></a-obj-model> 
-    <a-obj-model src="#wineAgainModel" mixin="graber" position ="-1.743 2.496 10.330" scale="0.010 0.010 0.010" mtl="#wineAgainMaterial"></a-obj-model> 
-    <a-obj-model src="#stoolMod" mixin="graber" position="0 0 0" scale="0.004 0.004 0.004" rotation ="-90 0 0" mtl="#stoolMat"></a-obj-model> 
+    <a-entity umUmUmUm id="modelWrap" visible="false"> 
+        <a-obj-model src="#hehModel" mixin="graber" position ="1.175 2.919 10.190" mtl="#hehMaterial"></a-obj-model> 
+        <a-obj-model src="#cokeModel"  mixin="graber" position ="0.619 2.922 10.383" scale="0.325 0.325 0.325" mtl="#cokeMaterial"></a-obj-model>
+        <a-obj-model src="#cockTailModel" mixin="graber" position ="-0.027 2.952 10.364" scale="0.250 0.250 0.250" mtl="#cockTailMaterial"></a-obj-model>
+        <a-obj-model src="#cheeseModel" mixin="graber" position ="-3.208 2.613 10.398" mtl="#cheeseMaterial"></a-obj-model> 
+        <a-obj-model src="#flaskModel" mixin="graber" position ="-1.504 2.551 10.247" scale="0.000001 0.000001 0.000001" mtl="#flaskMaterial"></a-obj-model> 
+        <a-obj-model src="#watModel" mixin="graber" position ="-0.653 2.408 10.243" mtl="#watMaterial"></a-obj-model> 
+        <a-obj-model src="#b3Model" mixin="graber" position ="-1.206 2.589 10.579" scale="0.005 0.005 0.005" mtl="#b3Material"></a-obj-model> 
+        <a-obj-model src="#wineAgainModel" mixin="graber" position ="-1.743 2.496 10.330" scale="0.010 0.010 0.010" mtl="#wineAgainMaterial"></a-obj-model> 
+        <a-obj-model src="#stoolMod" mixin="graber" position="0 0 0" scale="0.004 0.004 0.004" rotation ="-90 0 0" mtl="#stoolMat"></a-obj-model> 
     </a-entity>
     <a-box static-body width=100 height=0.001 depth=100 visible="false"></a-box>
     <a-box static-body width=8 height=0.001 position="-0.763 1.931 10.599" scale="0.936 0.936 -0.014" depth=100 visible="false"></a-box>
-
 </a-scene>
 </body>
 </html>
