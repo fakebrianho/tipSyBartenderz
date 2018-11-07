@@ -7,6 +7,7 @@
     <script src="components/ceiling.js"></script> 
     <script src="components/walls.js"></script> 
     <script src="components/phaseshift.js"></script> 
+    <script src="gameMechanics/startGame.js"></script> 
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script> 
     <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.2/dist/aframe-physics-system.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
@@ -84,7 +85,7 @@
         <a-asset-item id="tableMaterial" src="assets/textures/itme.mtl"></a-asset-item> 
     </a-assets>
 
-      <a-entity position="-0.662 2.747 12.244">
+      <a-entity>
         <a-camera position="-0.662 2.747 12.244" look-controls wasd-controls></a-camera>
         <a-entity id="rhand" mixin="touch"
                   obj-model="#cokeModel"
@@ -104,7 +105,10 @@
     <a-entity floors></a-entity> 
     <a-entity ceilings></a-entity> 
     <a-entity walls></a-entity> 
+    <a-entity starting></a-entity> 
     <a-entity text-geometry="value: Welcome to Tipsy Bartender!; font: #fontTest" material="color: red; src: #barFloor" position="-4 2.5 6" scale="1.3 1.3 1.3"></a-entity> 
+    <a-obj-model src="#BARMOD" position="0.000 2.385 13.830" mtl="#BARMAT"></a-obj-model> 
+    <a-entity id="modelWrap" visible="false"> 
     <a-obj-model src="#hehModel" mixin="graber" position ="1.175 2.919 10.190" mtl="#hehMaterial"></a-obj-model> 
     <a-obj-model src="#cokeModel"  mixin="graber" position ="0.619 2.922 10.383" scale="0.325 0.325 0.325" mtl="#cokeMaterial"></a-obj-model>
     <a-obj-model src="#cockTailModel" mixin="graber" position ="-0.027 2.952 10.364" scale="0.250 0.250 0.250" mtl="#cockTailMaterial"></a-obj-model>
@@ -113,8 +117,8 @@
     <a-obj-model src="#watModel" mixin="graber" position ="-0.653 2.408 10.243" mtl="#watMaterial"></a-obj-model> 
     <a-obj-model src="#b3Model" mixin="graber" position ="-1.206 2.589 10.579" scale="0.005 0.005 0.005" mtl="#b3Material"></a-obj-model> 
     <a-obj-model src="#wineAgainModel" mixin="graber" position ="-1.743 2.496 10.330" scale="0.010 0.010 0.010" mtl="#wineAgainMaterial"></a-obj-model> 
-    <a-obj-model src="#BARMOD" position="0.000 2.385 13.830" mtl="#BARMAT"></a-obj-model> 
     <a-obj-model src="#stoolMod" mixin="graber" position="0 0 0" scale="0.004 0.004 0.004" rotation ="-90 0 0" mtl="#stoolMat"></a-obj-model> 
+    </a-entity>
     <a-box static-body width=100 height=0.001 depth=100 visible="false"></a-box>
     <a-box static-body width=8 height=0.001 position="-0.763 1.931 10.599" scale="0.936 0.936 -0.014" depth=100 visible="false"></a-box>
 
