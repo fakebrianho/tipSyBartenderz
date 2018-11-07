@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="components/tables.js"></script> 
     <script src="components/floors.js"></script> 
     <script src="components/ceiling.js"></script> 
     <script src="components/walls.js"></script> 
+    <script src="components/phaseshift.js"></script> 
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script> 
     <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.2/dist/aframe-physics-system.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
@@ -14,21 +15,23 @@
     <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script> 
     <title>A MOTHER FUCKING FRAMES BITCH</title>
 <body>
-    <script>
-      AFRAME.registerComponent('phase-shift', {
-        init: function () {
-          var el = this.el
-          el.addEventListener('gripdown', function () {
-            el.setAttribute('collision-filter', {collisionForces: true})
-          })
-          el.addEventListener('gripup', function () {
-            el.setAttribute('collision-filter', {collisionForces: false})
-          })
-        }
-      })
-    </script> 
 <a-scene>
-    <a-assets>
+    <a-assets>   
+        <a-mixin id="touch"
+                 physics-collider phase-shift
+                 collision-filter="collisionForces: false"
+                 static-body="shape: sphere; sphereRadius: 0.02"
+                 super-hands="colliderEvent: collisions;
+                              colliderEventProperty: els;
+                              colliderEndEvent: collisions;
+                              colliderEndEventProperty: clearedEls;">
+        </a-mixin>
+        <a-mixin id="graber" 
+                 hoverable grabbable draggable
+                 event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
+                 event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"
+                 dynamic-body shadow>
+        </a-mixin>
         <img id="barFloor" src="assets/textures/floor.jpg">
         <img id="brickWall" src="assets/textures/brick.jpg">
         <a-asset-item id="fontTest" src="assets/League_Gothic_Regular.json"></a-asset-item>
@@ -74,28 +77,23 @@
         <a-asset-item id="ceilingMod" src="assets/wall.obj"></a-asset-item> 
         <a-asset-item id="ceilingMat" src="assets/wall.mtl"></a-asset-item> 
 
-        <a-asset-item id="barModel" src="assets/models/bar.obj">
-        <a-asset-item id="barMaterial" src="assets/textures/bar.mtl">
-        <a-asset-item id="bgTable" src="assets/models/table.obj">
-        <a-asset-item id="tableModel" src="assets/models/itme.obj">
-        <a-asset-item id="tableMaterial" src="assets/textures/itme.mtl">
-        </a-asset-item></a-asset-item></a-asset-item></a-asset-item></a-assets>
-    <!-- <a-entity camera="active: true" look-controls wasd-controls position="-0.662 2.747 12.244" data-aframe-default-camera></a-entity> -->
-    <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" material="" geometry=""></a-box> -->
-    <!--Controls-->
-    <!-- <a-entity vive-controls="hand: left"></a-entity> -->
-    <!-- <a-entity vive-controls="hand: right"></a-entity> -->
-      <a-entity>
-        <a-camera position="-0.662 2.747 12.244"></a-camera>
+        <a-asset-item id="barModel" src="assets/models/bar.obj"></a-asset-item> 
+        <a-asset-item id="barMaterial" src="assets/textures/bar.mtl"></a-asset-item> 
+        <a-asset-item id="bgTable" src="assets/models/table.obj"></a-asset-item> 
+        <a-asset-item id="tableModel" src="assets/models/itme.obj"></a-asset-item> 
+        <a-asset-item id="tableMaterial" src="assets/textures/itme.mtl"></a-asset-item> 
+    </a-assets>
+
+      <a-entity position="-0.662 2.747 12.244">
+        <a-camera position="-0.662 2.747 12.244" look-controls wasd-controls></a-camera>
         <a-entity id="rhand" mixin="touch"
-                  vive-controls="hand: right"
-                  oculus-touch-controls="hand: right"
-                  windows-motion-controls="hand: right">
+                  obj-model="#cokeModel"
+                  laser-controls="hand: right">
         </a-entity>
         <a-entity id="lhand" mixin="touch"
-                  vive-controls="hand: left"
-                  oculus-touch-controls="hand: left"
-                  windows-motion-controls="hand: left">
+                  obj-model="#cokeModel"
+                  laser-controls="hand: left">
+                  <a-obj-model src="#cokeModel" scale="0.325 0.325 0.325" mtl="#cokeMaterial"></a-obj-model>
         </a-entity>
       </a-entity>
     <!--Lights-->
@@ -107,17 +105,19 @@
     <a-entity ceilings></a-entity> 
     <a-entity walls></a-entity> 
     <a-entity text-geometry="value: Welcome to Tipsy Bartender!; font: #fontTest" material="color: red; src: #barFloor" position="-4 2.5 6" scale="1.3 1.3 1.3"></a-entity> 
-    <a-obj-model src="#hehModel" position ="1.175 2.919 10.190" mtl="#hehMaterial"></a-obj-model> 
-    <a-obj-model src="#cokeModel"  position ="0.619 2.922 10.383" scale="0.325 0.325 0.325" mtl="#cokeMaterial"></a-obj-model>
-    <a-obj-model src="#cockTailModel" position ="-0.027 2.952 10.364" scale="0.250 0.250 0.250" mtl="#cockTailMaterial"></a-obj-model>
-    <a-obj-model src="#cheeseModel" position ="-3.208 2.613 10.398" mtl="#cheeseMaterial"></a-obj-model> 
-    <a-obj-model src="#flaskModel" position ="-1.504 2.551 10.247" scale="0.000001 0.000001 0.000001" mtl="#flaskMaterial"></a-obj-model> 
-    <a-obj-model src="#watModel" position ="-0.653 2.408 10.243" mtl="#watMaterial"></a-obj-model> 
-    <a-obj-model src="#b3Model" position ="-1.206 2.589 10.579" scale="0.005 0.005 0.005" mtl="#b3Material"></a-obj-model> 
-    <a-obj-model src="#wineAgainModel" position ="-1.743 2.496 10.330" scale="0.010 0.010 0.010" mtl="#wineAgainMaterial"></a-obj-model> 
+    <a-obj-model src="#hehModel" mixin="graber" position ="1.175 2.919 10.190" mtl="#hehMaterial"></a-obj-model> 
+    <a-obj-model src="#cokeModel"  mixin="graber" position ="0.619 2.922 10.383" scale="0.325 0.325 0.325" mtl="#cokeMaterial"></a-obj-model>
+    <a-obj-model src="#cockTailModel" mixin="graber" position ="-0.027 2.952 10.364" scale="0.250 0.250 0.250" mtl="#cockTailMaterial"></a-obj-model>
+    <a-obj-model src="#cheeseModel" mixin="graber" position ="-3.208 2.613 10.398" mtl="#cheeseMaterial"></a-obj-model> 
+    <a-obj-model src="#flaskModel" mixin="graber" position ="-1.504 2.551 10.247" scale="0.000001 0.000001 0.000001" mtl="#flaskMaterial"></a-obj-model> 
+    <a-obj-model src="#watModel" mixin="graber" position ="-0.653 2.408 10.243" mtl="#watMaterial"></a-obj-model> 
+    <a-obj-model src="#b3Model" mixin="graber" position ="-1.206 2.589 10.579" scale="0.005 0.005 0.005" mtl="#b3Material"></a-obj-model> 
+    <a-obj-model src="#wineAgainModel" mixin="graber" position ="-1.743 2.496 10.330" scale="0.010 0.010 0.010" mtl="#wineAgainMaterial"></a-obj-model> 
     <a-obj-model src="#BARMOD" position="0.000 2.385 13.830" mtl="#BARMAT"></a-obj-model> 
-    <a-obj-model src="#stoolMod" position="0 0 0" scale="0.004 0.004 0.004" rotation ="-90 0 0" mtl="#stoolMat"></a-obj-model> 
+    <a-obj-model src="#stoolMod" mixin="graber" position="0 0 0" scale="0.004 0.004 0.004" rotation ="-90 0 0" mtl="#stoolMat"></a-obj-model> 
+    <a-box static-body width=100 height=0.001 depth=100 visible="false"></a-box>
+    <a-box static-body width=8 height=0.001 position="-0.763 1.931 10.599" scale="0.936 0.936 -0.014" depth=100 visible="false"></a-box>
 
 </a-scene>
 </body>
-</html> 
+</html>
