@@ -12,14 +12,23 @@ AFRAME.registerComponent('starting',{
                     visGroup.setAttribute('visible', 'true');
                 }, 9000);
                 }
-            }
 }); 
 
-AFRAME.registerComponent('umUmUmUm', {
+AFRAME.registerComponent('umumumum', {
         play: function () {
           this.el.addEventListener('grab-start', function (evt) {
-                console.log('yesss');
+                countTime = true;
           })
+        },
+        tick: function(){
+            if(countTime){
+                let sceneEl = document.querySelector('a-scene');
+                let text = document.querySelector('#txt');
+                counterString = counter.toString();
+                counter = counter - 1;
+                console.log(counter);
+                text.setAttribute('text-geometry', 'value: ' + counterString);
+    } 
         }
 })
 
@@ -31,12 +40,12 @@ AFRAME.registerComponent('click-listener', {
     });
   },
     tick: function(){
-    if(countTime){
-        let sceneEl = document.querySelector('a-scene');
-        let text = document.querySelector('#txt');
-        counterString = counter.toString();
-        counter = counter - 1;
-        //console.log(counter);
+    //if(countTime){
+     //   let sceneEl = document.querySelector('a-scene');
+      //  let text = document.querySelector('#txt');
+       // counterString = counter.toString();
+     //   counter = counter - 1;
+      //  console.log(counter);
        // text.setAttribute('text-geometry', 'value: ' + counterString);
     } 
     }
