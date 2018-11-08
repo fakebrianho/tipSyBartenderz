@@ -40,13 +40,13 @@ AFRAME.registerComponent('click-listener', {
     });
   },
     tick: function(){
-    //if(countTime){
-     //   let sceneEl = document.querySelector('a-scene');
-      //  let text = document.querySelector('#txt');
-       // counterString = counter.toString();
-     //   counter = counter - 1;
-      //  console.log(counter);
-       // text.setAttribute('text-geometry', 'value: ' + counterString);
+    if(countTime){
+        let sceneEl = document.querySelector('a-scene');
+        let text = document.querySelector('#txt');
+        counterString = counter.toString();
+        counter = counter - 1;
+        console.log(counter);
+        text.setAttribute('text-geometry', 'value: ' + counterString);
     } 
     
 });
